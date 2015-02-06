@@ -1,0 +1,21 @@
+Gem::Specification.new do |s|
+  s.name        = 'ai_agent'
+  s.version     = '0.0.1'
+  s.date        = Time.now.strftime('%Y-%m-%d')
+  s.summary     = 'Application Insight Agent'
+  s.description = 'A TOML parser using Citrus parsing library. '
+  s.authors     = ['Emiliano Mancuso']
+  s.email       = ['emiliano.mancuso@gmail.com']
+  s.homepage    = 'http://github.com/emancu/ai_agent'
+  s.license     = 'MIT'
+
+  s.files = Dir[
+    'README.md',
+    'Rakefile',
+    'lib/**/*.rb',
+    '*.gemspec',
+    'test/*.*'
+  ]
+
+  s.add_dependency 'application_insights', '~> 0.3.0', '> 0.3'
+end
