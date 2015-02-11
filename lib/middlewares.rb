@@ -9,11 +9,11 @@ module ApplicationInsightsInstaller
       end
 
       def enabled
-        @enabled_middlewares
+        @enabled_middlewares || []
       end
 
       def settings
-        @settings
+        @settings || {}
       end
 
       private
