@@ -1,6 +1,6 @@
 require 'toml'
 
-module ApplicationInsightsInstaller
+module AppInsights
   class ConfigLoader
     attr_reader :settings, :filename
 
@@ -10,13 +10,13 @@ module ApplicationInsightsInstaller
       @filename = File.join(@root, @filename) if @filename
 
       unless @filename && File.exist?(@filename)
-        fail ApplicationInsightsInstaller::ConfigFileNotFound
+        fail AppInsights::ConfigFileNotFound
       end
 
       @settings = TOML.load_file @filename
 
-      Context.configure @settings['ai']
-      Middlewares.configure @settings['middleware']
+      AppInsights::Context.configure @settings['ai']
+      AppInsights::Middlewares.configure @settings['middleware']
     end
 
     private

@@ -1,6 +1,6 @@
 require 'application_insights'
 
-module ApplicationInsightsInstaller
+module AppInsights
   class Context
     class << self
       def configure(config = {})

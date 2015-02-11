@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-describe ApplicationInsightsInstaller::Context do
+describe AppInsights::Context do
   before do
     @configs = {
       'instrumentation_key' => 'a_key',
@@ -18,13 +18,13 @@ describe ApplicationInsightsInstaller::Context do
 
   describe 'configure' do
     it 'returns a ApplicationInsights::Channel::TelemetryContext object' do
-      context = ApplicationInsightsInstaller::Context.configure
+      context = AppInsights::Context.configure
 
       assert_equal ApplicationInsights::Channel::TelemetryContext, context.class
     end
 
     it 'accepts a hash to set Context values' do
-      context = ApplicationInsightsInstaller::Context.configure @configs
+      context = AppInsights::Context.configure @configs
 
       assert_equal 'a_key', context.instrumentation_key
       assert_equal '0.0.1', context.application.ver
@@ -33,9 +33,9 @@ describe ApplicationInsightsInstaller::Context do
 
   describe 'telemetry_client' do
     before do
-      ApplicationInsightsInstaller::Context.configure @configs
+      AppInsights::Context.configure @configs
 
-      @client = ApplicationInsightsInstaller::Context.telemetry_client
+      @client = AppInsights::Context.telemetry_client
     end
 
     it 'returns an instance of ApplicationInsights::TelemetryClient' do

@@ -15,7 +15,7 @@
 # Enable/Disable Middlewares
 
 [[middleware]]
-  name = 'ApplicationInsightsInstaller::ExceptionHandling'
+  name = 'AppInsights::ExceptionHandling'
   enabled = true
 
 [[middleware]]

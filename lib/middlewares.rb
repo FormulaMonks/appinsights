@@ -1,6 +1,6 @@
 require_relative 'middlewares/exception_handling'
 
-module ApplicationInsightsInstaller
+module AppInsights
   class Middlewares
     class << self
       def configure(settings = {})
@@ -29,7 +29,7 @@ module ApplicationInsightsInstaller
             end
           rescue NameError => e
             # FIXME: Log, ignore or fail?
-            raise ApplicationInsightsInstaller::UnknownMiddleware, e.message
+            raise AppInsights::UnknownMiddleware, e.message
           end
         end
 

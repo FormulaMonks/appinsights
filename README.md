@@ -1,2 +1,2 @@
-# ai-rails
-Microsoft Application Insights for Rails
+# appinsights
+Microsoft Application Insights AutoInstaller for Ruby frameworks

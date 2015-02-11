@@ -3,13 +3,13 @@ require_relative 'context'
 require_relative 'middlewares'
 require_relative 'config_loader'
 
-module ApplicationInsightsInstaller
+module AppInsights
   if defined?(Rails::VERSION)
     require_relative 'frameworks/rails'
   else
     puts <<-EOS
       Config file not loaded.
-      Use ApplicationInsightsInstaller::ConfigLoader.new root, filename
+      Use AppInsights::ConfigLoader.new root, filename
       to setup the Context and middlewares.
     EOS
 

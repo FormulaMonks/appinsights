@@ -1,6 +1,6 @@
 require 'application_insights'
 
-module ApplicationInsightsInstaller
+module AppInsights
   class ExceptionHandling
     def initialize(app)
       @app = app
@@ -9,7 +9,7 @@ module ApplicationInsightsInstaller
     def call(env)
       @app.call env
     rescue Exception => exception
-      tc = ApplicationInsightsInstaller::Context.telemetry_client
+      tc = AppInsights::Context.telemetry_client
       tc.track_exception exception
 
       raise exception
