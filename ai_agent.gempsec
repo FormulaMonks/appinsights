@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'A TOML parser using Citrus parsing library. '
   s.authors     = ['Emiliano Mancuso']
   s.email       = ['emiliano.mancuso@gmail.com']
-  s.homepage    = 'http://github.com/emancu/ai_agent'
+  s.homepage    = 'http://github.com/citrusbyte/ai-rails'
   s.license     = 'MIT'
 
   s.files = Dir[
@@ -17,5 +17,6 @@ Gem::Specification.new do |s|
     'test/*.*'
   ]
 
-  s.add_dependency 'application_insights', '~> 0.3.0', '> 0.3'
+  s.add_dependency 'application_insights', '~> 0.5.0'
+  s.add_dependency 'toml-rb', '~> 0.2.1'
 end

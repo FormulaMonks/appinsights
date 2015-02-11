@@ -1,1 +1,2 @@
-application_insights -v 0.3.0
+application_insights -v 0.5.0
+toml-rb -v 0.2.1
