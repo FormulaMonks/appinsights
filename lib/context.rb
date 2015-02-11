@@ -1,32 +1,43 @@
 require 'application_insights'
 
-module AIAgent
+module ApplicationInsightsInstaller
   class Context
     class << self
-      def self.configure(config)
-        @context = ApplicationInsights::Channel::TelemetryContext.new
+      def configure(config = {})
+        @context = telemetry_client.context
 
-        @context.user = extract_configs config, 'ai.user.'
-        @context.device = extract_configs config, 'ai.device.'
-        @context.session = extract_configs config, 'ai.session.'
-        @context.location = extract_configs config, 'ai.location.'
-        @context.operation = extract_configs config, 'ai.operation.'
-        @context.application = extract_configs config, 'ai.application.'
-        @context.instrumentation_key = config.delete :instrumentation_key
-        @context.properties = config
+        contracts.each do |contract|
+          instance = configure_contract(contract.capitalize, config)
+          @context.send :"#{contract}=", instance
+        end
+
+        @context.instrumentation_key = config['instrumentation_key']
+        @context.properties = extract_custom_properties config
+
+        @context
       end
 
-      def self.telemetry_client
-        @client ||=
-          ApplicationInsights::TelemetryClient.new.tap do |tc|
-            tc.context = @context if @context
-          end
+      def telemetry_client
+        @client ||= ApplicationInsights::TelemetryClient.new
       end
 
       private
 
-      def extract_configs(config, key_prefix)
-        config.delete_if { |k,v| k.to_s.start_with? key_prefix }
+      def configure_contract(contract, config)
+        const = ApplicationInsights::Channel::Contracts.const_get contract.to_sym
+
+        const.new config[contract.downcase]
+      rescue NameError => e
+        nil
+      end
+
+      # Custom properties are defined at [ai] level of the config file.
+      def extract_custom_properties(config)
+        config.reject { |k, v| k.to_s == 'instrumentation_key' || v.is_a?(Hash) }
+      end
+
+      def contracts
+        %w(user device session location operation application)
       end
     end
   end
