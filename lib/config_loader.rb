@@ -1,3 +1,5 @@
+require 'toml'
+
 module ApplicationInsightsInstaller
   class ConfigLoader
     attr_reader :settings, :filename

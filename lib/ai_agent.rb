@@ -1,4 +1,3 @@
-require 'toml'
 require_relative 'errors'
 require_relative 'context'
 require_relative 'middlewares'
@@ -8,9 +7,14 @@ module ApplicationInsightsInstaller
   if defined?(Rails::VERSION)
     require_relative 'frameworks/rails'
   else
+    puts <<-EOS
+      Config file not loaded.
+      Use ApplicationInsightsInstaller::ConfigLoader.new root, filename
+      to setup the Context and middlewares.
+    EOS
+
     # Initialize for other frameworks
     #
     # loader = ConfigLoader.new __FILE__
   end
 end
-

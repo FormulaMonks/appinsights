@@ -24,10 +24,10 @@ module ApplicationInsightsInstaller
       private
 
       def configure_contract(contract, config)
-        const = ApplicationInsights::Channel::Contracts.const_get contract.to_sym
+        const = ApplicationInsights::Channel::Contracts.const_get contract
 
         const.new config[contract.downcase]
-      rescue NameError => e
+      rescue NameError
         nil
       end
 

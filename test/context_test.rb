@@ -3,15 +3,15 @@ require_relative 'helper'
 describe ApplicationInsightsInstaller::Context do
   before do
     @configs = {
-      "instrumentation_key" => "a_key",
-      "custom" => 4,
-      "properties" => "belong to the context",
-      "application" => {
-        "ver" => "0.0.1"
+      'instrumentation_key' => 'a_key',
+      'custom' => 4,
+      'properties' => 'belong to the context',
+      'application' => {
+        'ver' => '0.0.1'
       },
-      "device" => {
-        "id" => "asdfghjkl1",
-        "os" => "OSX"
+      'device' => {
+        'id' => 'asdfghjkl1',
+        'os' => 'OSX'
       }
     }
   end

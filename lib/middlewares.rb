@@ -29,7 +29,7 @@ module ApplicationInsightsInstaller
             end
           rescue NameError => e
             # FIXME: Log, ignore or fail?
-            fail ApplicationInsightsInstaller::UnknownMiddleware.new e
+            raise ApplicationInsightsInstaller::UnknownMiddleware, e.message
           end
         end
 
