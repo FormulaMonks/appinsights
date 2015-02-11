@@ -9,6 +9,9 @@ module ApplicationInsightsInstaller
       fail ApplicationInsightsInstaller::ConfigFileNotFound unless @filename
 
       @settings = TOML.load_file @filename
+
+      Context.configure @settings['ai']
+      Middlewares.configure @settings['middleware']
     end
 
     private

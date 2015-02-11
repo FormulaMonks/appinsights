@@ -8,10 +8,9 @@ module ApplicationInsightsInstaller
   if defined?(Rails::VERSION)
     require_relative 'frameworks/rails'
   else
-    loader = ConfigLoader.new __FILE__
     # Initialize for other frameworks
-    Context.configure loader.settings['ai']
-    Middlewares.configure loader.settings['middleware']
+    #
+    # loader = ConfigLoader.new __FILE__
   end
 end
 
