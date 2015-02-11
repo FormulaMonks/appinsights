@@ -1,6 +1,6 @@
 require 'application_insights'
 
-module AIAgent
+module ApplicationInsightsInstaller
   class ExceptionHandling
     def initialize(app)
       @app = app
@@ -9,7 +9,8 @@ module AIAgent
     def call(env)
       @app.call env
     rescue Exception => exception
-      AIAgent::Context.telemetry_client.track_exception exception
+      tc = ApplicationInsightsInstaller::Context.telemetry_client
+      tc.track_exception exception
 
       raise exception
     end
