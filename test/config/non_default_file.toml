@@ -1,0 +1,28 @@
+[ai]
+  instrumentation_key = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
+  custom = 4
+  properties = 'belong to the context'
+
+# Contracts configuration
+
+  [ai.application]
+    ver = '0.2.0'
+
+  [ai.device]
+    id = 'asdfghjkl1'
+    os = 'OSX'
+
+# Enable/Disable Middlewares
+
+[[middleware]]
+  name = 'ApplicationInsightsInstaller::ExceptionHandling'
+  enabled = true
+
+[[middleware]]
+  name = 'ApplicationInsights::Rack::TrackRequest'
+  enabled = true
+
+  [middleware.initialize]
+    instrumentation_key = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
+    buffer_size = 500
+    send_interval = 60

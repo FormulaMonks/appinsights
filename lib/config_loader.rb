@@ -7,8 +7,11 @@ module ApplicationInsightsInstaller
     def initialize(root, filename = nil)
       @root = root
       @filename = filename || default_file
+      @filename = File.join(@root, @filename) if @filename
 
-      fail ApplicationInsightsInstaller::ConfigFileNotFound unless @filename
+      unless @filename && File.exist?(@filename)
+        fail ApplicationInsightsInstaller::ConfigFileNotFound
+      end
 
       @settings = TOML.load_file @filename
 
@@ -19,13 +22,13 @@ module ApplicationInsightsInstaller
     private
 
     def default_file
-      default_paths.compact.find { |path| File.exist? path }
+      default_paths.compact.find { |path| File.exist? File.join(@root, path) }
     end
 
     def default_paths
       @default_paths ||= [
-        File.join(@root, './config/application_insights.toml'),
-        File.join(@root, './application_insights.toml'),
+        './config/application_insights.toml',
+        './application_insights.toml',
         # ENV['AI_CONFIG_PATH']
       ]
     end
