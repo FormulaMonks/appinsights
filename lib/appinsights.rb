@@ -2,6 +2,7 @@ require_relative 'errors'
 require_relative 'context'
 require_relative 'middlewares'
 require_relative 'config_loader'
+require_relative 'installers/base'
 
 module AppInsights
   if defined?(Rails::VERSION)

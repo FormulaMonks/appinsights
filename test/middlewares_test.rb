@@ -2,6 +2,11 @@ require_relative 'helper'
 
 describe AppInsights::Middlewares do
   before do
+    AppInsights::Middlewares.tap do |klass|
+      klass.instance_variable_set :@settings, nil
+      klass.instance_variable_set :@enabled_middlewares, nil
+    end
+
     @configs = [
       {
         'name'    => 'AppInsights::ExceptionHandling',
@@ -12,13 +17,6 @@ describe AppInsights::Middlewares do
         'enabled' => false
       }
     ]
-  end
-
-  after do
-    AppInsights::Middlewares.tap do |klass|
-      klass.instance_variable_set :@settings, nil
-      klass.instance_variable_set :@enabled_middlewares, nil
-    end
   end
 
   describe 'enabled' do

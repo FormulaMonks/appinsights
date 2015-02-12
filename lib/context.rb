@@ -21,6 +21,10 @@ module AppInsights
         @client ||= ApplicationInsights::TelemetryClient.new
       end
 
+      def context
+        @context
+      end
+
       private
 
       def configure_contract(contract, config)

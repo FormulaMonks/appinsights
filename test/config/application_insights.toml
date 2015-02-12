@@ -1,5 +1,5 @@
 [ai]
-  instrumentation_key = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+  instrumentation_key = 'aaaaaaaa-aaaa-aaaa-aaaa'
   custom = 4
   properties = 'belong to the context'
 
@@ -23,7 +23,7 @@
   enabled = true
 
   [middleware.initialize]
-    instrumentation_key = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+    instrumentation_key = 'aaaaaaaa-aaaa-aaaa-aaaa'
     buffer_size = 500
     send_interval = 60
 
