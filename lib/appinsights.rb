@@ -5,16 +5,17 @@ require_relative 'config_loader'
 
 module AppInsights
   if defined?(Rails::VERSION)
-    require_relative 'frameworks/rails'
+    require_relative 'installers/rails'
+  elsif defined?(Sinatra::VERSION)
+    require_relative 'installers/sinatra'
   else
-    puts <<-EOS
-      Config file not loaded.
-      Use AppInsights::ConfigLoader.new root, filename
+    require 'logger'
+
+    logger = Logger.new STDOUT
+    logger.info <<-EOS
+      Framework unknown, auto installation suspended.
+      Use AppInsights::BaseInstaller.new app, root, filename
       to setup the Context and middlewares.
     EOS
-
-    # Initialize for other frameworks
-    #
-    # loader = ConfigLoader.new __FILE__
   end
 end
