@@ -27,9 +27,9 @@ module AppInsights
 
     def default_paths
       @default_paths ||= [
+        ENV['AI_CONFIG_RPATH'],
         './config/application_insights.toml',
-        './application_insights.toml',
-        # ENV['AI_CONFIG_PATH']
+        './application_insights.toml'
       ]
     end
   end

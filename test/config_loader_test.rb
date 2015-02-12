@@ -33,6 +33,16 @@ describe AppInsights::ConfigLoader do
       deny loader.settings.empty?
     end
 
+    it 'loads the config file from the ENV variable' do
+      ENV['AI_CONFIG_RPATH'] = 'test/config/non_default_file.toml'
+
+      loader = AppInsights::ConfigLoader.new './'
+
+      deny loader.settings.empty?
+
+      ENV.delete 'AI_CONFIG_RPATH'
+    end
+
     it 'autoconfigure the Context and middlewares' do
       tc = AppInsights::Context.telemetry_client
       settings = AppInsights::Middlewares.settings
