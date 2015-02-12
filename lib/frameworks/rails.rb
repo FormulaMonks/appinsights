@@ -1,19 +1,16 @@
 module AppInsights
-  class Railtie < Rails::Railtie
-    initializer 'ai_agent.start_plugin' do |_app|
-      begin
-        AppInsights::ConfigLoader.new Rails.root
+  class RailsInstaller < Rails::Railtie
+    initializer 'appinsights.start_plugin' do |_app|
+      init Rails.root
+    end
 
-        AppInsights::Middlewares.enabled.each do |middleware, args|
-          config.app_middleware.use middleware, *args.values
-        end
-      rescue AppInsights::ConfigFileNotFound => e
-        Rails.logger.error e.message
-        Rails.logger.info <<-EOS
-          Place your config file `application_insights.toml` into your rails
-          application under the `config` directory.
-        EOS
-      end
+    def init(root, filename = nil)
+      installer = AppInsights::Base.new config.app_middleware,
+                                        root,
+                                        filename,
+                                        Rails.logger
+
+      installer.install
     end
   end
 end
