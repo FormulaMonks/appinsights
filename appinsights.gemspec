@@ -1,6 +1,8 @@
+require_relative 'lib/version'
+
 Gem::Specification.new do |s|
   s.name        = 'appinsights'
-  s.version     = '0.0.1'
+  s.version     = AppInsights::VERSION
   s.date        = Time.now.strftime('%Y-%m-%d')
   s.summary     = 'Application Insights Auto-Installer'
   s.description = 'Application Insights AutoInstaller for Ruby'
