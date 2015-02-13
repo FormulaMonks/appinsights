@@ -1,4 +1,4 @@
-require_relative 'lib/version'
+require_relative 'lib/appinsights/version'
 
 Gem::Specification.new do |s|
   s.name        = 'appinsights'

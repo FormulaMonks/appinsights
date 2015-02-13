@@ -1,14 +1,14 @@
-require_relative 'errors'
-require_relative 'context'
-require_relative 'middlewares'
-require_relative 'config_loader'
-require_relative 'installers/base'
+require_relative 'appinsights/errors'
+require_relative 'appinsights/context'
+require_relative 'appinsights/middlewares'
+require_relative 'appinsights/config_loader'
+require_relative 'appinsights/installers/base'
 
 module AppInsights
   if defined?(Rails::VERSION)
-    require_relative 'installers/rails'
+    require_relative 'appinsights/installers/rails'
   elsif defined?(Sinatra::VERSION)
-    require_relative 'installers/sinatra'
+    require_relative 'appinsights/installers/sinatra'
   else
     require 'logger'
 

@@ -7,9 +7,9 @@ module AppInsights
     end
 
     def self.init(root, filename = nil)
-      installer = AppInsights::Base.new Sinatra::Application,
-                                        root,
-                                        filename
+      installer = AppInsights::BaseInstaller.new Sinatra::Application,
+                                                 root,
+                                                 filename
 
       installer.install
     end
