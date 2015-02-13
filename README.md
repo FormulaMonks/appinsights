@@ -52,9 +52,25 @@ There is nothing else to do.
 
 Add the following line in your _sinatra application file_:
 
-    require 'appinsights'
+```ruby
+require 'appinsights'
+```
 
 > NOTE: Ensure that `sinatra` was required first.
+
+### Cuba
+
+`cuba` is similar to `sinatra` but it requires one more line to configure it.
+Since a `cuba` application does not keep the root path of the application we
+have to specify it to read the config file and complete the installation.
+Given this is a common framework, there is a one-step-installation line:
+
+```ruby
+require 'appinsights'
+
+# Accepts the root path of the application and an optional file name
+AppInsights::CubaInstaller.init File.dirname(__FILE__)
+```
 
 ## Manual
 
