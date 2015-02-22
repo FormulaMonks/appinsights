@@ -13,8 +13,8 @@ module AppInsights
         @app.use middleware, *args.values
       end
     rescue AppInsights::ConfigFileNotFound => e
-      @logger.error e.message
-      @logger.info config_file_not_found_message
+      logger.error e.message
+      logger.info config_file_not_found_message
     end
 
     def logger
