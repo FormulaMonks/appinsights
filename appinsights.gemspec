@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
     'test/*.*'
   ]
 
-  s.add_dependency 'toml-rb', '~> 0.2.1'
+  s.add_dependency 'toml-rb', '~> 0.3.0'
   s.add_dependency 'application_insights', '~> 0.5.0'
 
-  s.add_development_dependency 'rack', '~> 1.6', '>= 1.0.0'
+  s.add_development_dependency 'rack', '~> 1.6'
 end
