@@ -62,5 +62,18 @@ describe AppInsights::ConfigLoader do
       deny settings.empty?
       deny middlewares.empty?
     end
+
+    it 'autoconfigure the Context as async' do
+      AppInsights::ConfigLoader.new './test/config', 'async_file.toml'
+
+      tc = AppInsights::Context.telemetry_client
+
+      assert tc.context.instrumentation_key
+      assert_equal 'ApplicationInsights::Channel::AsynchronousQueue', tc.channel.queue.class.name
+      assert_equal 'ApplicationInsights::Channel::AsynchronousSender', tc.channel.queue.sender.class.name
+      assert_equal 1, tc.channel.queue.sender.send_interval
+      assert_equal 2, tc.channel.queue.sender.send_buffer_size
+      assert_equal 3, tc.channel.queue.max_queue_length
+    end
   end
 end

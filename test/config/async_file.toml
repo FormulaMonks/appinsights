@@ -1,0 +1,6 @@
+[ai]
+  instrumentation_key = 'cccccccc-cccc-cccc-cccc'
+  async = true
+  async_send_interval_seconds = 1
+  async_send_buffer_size = 2
+  async_max_queue_length = 3

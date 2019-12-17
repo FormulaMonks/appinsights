@@ -4,6 +4,16 @@ module AppInsights
   class Context
     class << self
       def configure(config = {})
+        if config.fetch('async', false)
+          sender = ApplicationInsights::Channel::AsynchronousSender.new
+          sender.send_interval = config.fetch('async_send_interval_seconds', 60)
+          sender.send_buffer_size = config.fetch('async_send_buffer_size', 100)
+          queue = ApplicationInsights::Channel::AsynchronousQueue.new sender
+          queue.max_queue_length = config.fetch('async_max_queue_length', 500)
+          channel = ApplicationInsights::Channel::TelemetryChannel.new(nil, queue)
+          @client = ApplicationInsights::TelemetryClient.new(nil, channel)
+        end
+
         @context = telemetry_client.context
 
         contracts.each do |contract|
