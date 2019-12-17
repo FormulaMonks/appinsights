@@ -3,6 +3,7 @@ require_relative 'appinsights/errors'
 require_relative 'appinsights/context'
 require_relative 'appinsights/middlewares'
 require_relative 'appinsights/config_loader'
+require_relative 'appinsights/logger_proxy'
 require_relative 'appinsights/installers/base'
 
 module AppInsights
