@@ -8,6 +8,6 @@ class MockLogger < Logger
   end
 
   def add(severity, message = nil, progname = nil, &block)
-    @messages << [severity, messages, progname, block]
+    @messages << [severity, message, progname, block]
   end
 end
