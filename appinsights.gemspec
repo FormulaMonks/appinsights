@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.description = 'Application Insights AutoInstaller for Ruby'
   s.authors     = ['Emiliano Mancuso']
   s.email       = ['emiliano.mancuso@gmail.com']
-  s.homepage    = 'http://github.com/citrusbyte/appinsights'
+  s.homepage    = 'http://github.com/Theorem/appinsights'
   s.license     = 'MIT'
 
   s.files = Dir[
