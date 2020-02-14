@@ -13,6 +13,8 @@ module AppInsights
                                                  Rails.logger
 
       installer.install
+
+      Rails.logger = AppInsights::LoggerProxy.new Rails.logger
     end
   end
 end
